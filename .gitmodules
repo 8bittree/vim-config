@@ -1,0 +1,3 @@
+[submodule "bundle/Ultisnips"]
+	path = bundle/Ultisnips
+	url = https://github.com/rygwdn/ultisnips.git
