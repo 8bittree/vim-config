@@ -47,10 +47,8 @@ call pathogen#infect()
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715
 "	Textmate-like snippets
 
-" Gundo
-
-" vim-golang: https://github.com/jnwhiteh/vim-golang
-" Syntax highlighting and indentation for Go and GoDoc support
+" Gundo: http://sjl.bitbucket.org/gundo.vim/
+"	Easily browse the undo tree
 
 call pathogen#helptags() " generate helptags for installed plugins
 
