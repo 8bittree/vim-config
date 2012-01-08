@@ -134,11 +134,17 @@ nmap <C-s> :up<CR>
 imap <C-s> <ESC>:up<CR>a
 cmap <C-s> <ESC>:up<CR>
 
+" Quickly edit files in the same directory as the current file
 cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 map <leader>ew :edit %%
 map <leader>es :split %%
 map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
+
+" Make Ultisnips completion keys consistent
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
