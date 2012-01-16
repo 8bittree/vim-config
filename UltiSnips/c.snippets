@@ -40,3 +40,44 @@ snippet dep "debugging print"
 printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
 #endif // DEBUG
 endsnippet
+
+snippet fdec "function declaration" 
+/*
+ * $4
+ */
+${2:void} ${1:function}($3);
+endsnippet
+
+snippet fdef "function definition" 
+${2:void} ${1:function}($3) {
+	${0:/* code */}
+}
+endsnippet
+
+snippet whil "while"
+while (${1:/* condition */}) {
+	${0:/* code */}
+}
+endsnippet
+
+snippet "} elif" "else if" 
+} else if (${1:/* condition */}) {
+	${0:/* code */}
+}
+endsnippet
+
+snippet "} else" "else" 
+} else {
+	${1:/* code */}
+}
+endsnippet
+
+snippet swit "switch" 
+switch(${1:/* condition */}) {
+	case ${2:c}:	${3:/* code */}
+}
+endsnippet
+
+snippet ca "case" 
+case ${1:c}:	${2:/* code */}
+endsnippet
