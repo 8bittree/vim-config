@@ -91,7 +91,8 @@ set ignorecase " Ignore case when searching
 set smartcase " Don't ignore case when typing capitals in the search term
 set hlsearch " Highlight search matches
 
-set wildmode=list:longest,full " Command completion, list all options and add longest match first, then sequentially match complete options
+set wildmenu " Show matches for command completion in status bar
+set wildmode=longest:full " Command completion, add longest match first then sequentially match complete options
 
 set mouse=a " Enable mouse usage
 set mousehide " Hide mouse while typing
