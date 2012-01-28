@@ -125,10 +125,10 @@ nmap <leader>l :set list!<cr>
 nnoremap ; :
 
 " Better window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Save with Ctrl-s
 nmap <C-s> :up<CR>
@@ -143,9 +143,9 @@ map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
 
 " Make Ultisnips completion keys consistent
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
