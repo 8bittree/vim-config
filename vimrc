@@ -50,6 +50,9 @@ call pathogen#infect()
 " Gundo: http://sjl.bitbucket.org/gundo.vim/
 "	Easily browse the undo tree
 
+" Solarized: http://ethanschoonover.com/solarized
+"	Colorscheme that works well in light and dark
+
 call pathogen#helptags() " generate helptags for installed plugins
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,11 +71,12 @@ set laststatus=2 " Turn on the statusline
 set cursorline " Highlight the line the cursor is on
 set cursorcolumn " Highlight the column the cursor is on
 
-" Theme, uses modified version of molokai
+" Theme, uses solarized
 syntax on
+set background=dark
 if has("gui_running")
 	set t_Co=256
-	colorscheme molokai_mod
+	colorscheme solarized
 	if os == "Linux"
 		set gfn=Dejavu\ Sans\ Mono\ 9
 	elseif os == "Darwin"
@@ -83,7 +87,7 @@ if has("gui_running")
 	set guioptions-=T " Don't display the toolbar
 endif
 if $TERM == 'xterm-256color'
-	colorscheme molokai_mod
+	colorscheme solarized
 endif
 
 set incsearch " Incremental search (search as you type)
