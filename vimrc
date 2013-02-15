@@ -124,6 +124,9 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Toggle the display of whitespace characters
 nmap <leader>l :set list!<cr>
 
+" Easily toggle Gundo window
+nmap <leader>u :GundoToggle<CR>
+
 " Just type ; instead of : to enter a command
 " nnoremap makes sure that ; does what : originally did, regardless of any remmapping of :
 nnoremap ; :
