@@ -18,6 +18,8 @@ set history=512 " How many lines of history to remember
 set nobackup
 " Do make a swap file
 set swapfile
+" Make an undo file for persistent undo tree
+set undofile
 
 " Enable switching away from buffers without saving
 set hidden
@@ -85,6 +87,7 @@ if has("gui_running")
 		set gfn=*
 	endif
 	set guioptions-=T " Don't display the toolbar
+	set guioptions-=e " use ASCII tabs, not GUI tabs (e)
 endif
 if $TERM == 'xterm-256color'
 	colorscheme solarized
