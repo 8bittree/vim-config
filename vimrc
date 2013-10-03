@@ -20,6 +20,9 @@ set nobackup
 set swapfile
 " Make an undo file for persistent undo tree
 set undofile
+" Keep working directories clean by putting and undo files in dedicated
+" directories
+set undodir=~/.vim/vimundo
 
 " Enable switching away from buffers without saving
 set hidden
@@ -37,7 +40,9 @@ set noexpandtab " Don't expand tabs into spaces
 set autoindent " keep the previous line's indentation
 set smartindent " keeps previous line's indent, indent line after {, puts a } on a new line at same level as matching {
 
-filetype plugin indent on " Enable filetype detection, filetype specific plugins, and filetype specific indentation
+" Enable filetype detection, filetype specific plugins, and filetype specific
+" indentation
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins used
