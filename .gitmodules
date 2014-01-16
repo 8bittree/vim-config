@@ -19,3 +19,6 @@
 [submodule "bundle/repeat"]
 	path = bundle/repeat
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "bundle/keepcase"]
+	path = bundle/keepcase
+	url = https://github.com/vim-scripts/keepcase.vim.git
