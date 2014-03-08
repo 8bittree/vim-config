@@ -18,11 +18,14 @@ set history=512 " How many lines of history to remember
 set nobackup
 " Do make a swap file
 set swapfile
-" Make an undo file for persistent undo tree
-set undofile
-" Keep working directories clean by putting and undo files in dedicated
-" directories
-set undodir=~/.vim/vimundo
+
+if has('undofile')
+	" Make an undo file for persistent undo tree
+	set undofile
+	" Keep working directories clean by putting and undo files in dedicated
+	" directories
+	set undodir=~/.vim/vimundo
+endif
 
 " Enable switching away from buffers without saving
 set hidden
@@ -67,8 +70,9 @@ call pathogen#helptags() " generate helptags for installed plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=3	" Keeps at least 3 visible lines around the cursor at all times
 
-set relativenumber " Display relative line numbers
-" set relativenumber " Displays the line number relative to the cursor
+if has('relativenumber')
+	set relativenumber " Displays the line number relative to the cursor
+endif
 
 " Configure status line
 " modified, file, file type, read only, column, virtual column, line number, lines
