@@ -70,7 +70,7 @@ call pathogen#helptags() " generate helptags for installed plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=3	" Keeps at least 3 visible lines around the cursor at all times
 
-if has('relativenumber')
+if exists('+relativenumber')
 	set relativenumber " Displays the line number relative to the cursor
 endif
 
