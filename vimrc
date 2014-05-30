@@ -93,7 +93,11 @@ if has("gui_running")
 	elseif os == "Darwin"
 		set gfn=Menlo:h10
 	else
-		set gfn=*
+		try
+			set gfn=Dejavu_Sans_Mono:h9
+		catch
+			set gfn=*
+		endtry
 	endif
 	set guioptions-=T " Don't display the toolbar
 	set guioptions-=e " use ASCII tabs, not GUI tabs (e)
@@ -114,8 +118,12 @@ set mouse=a " Enable mouse usage
 set mousehide " Hide mouse while typing
 
 " Configure whitespace characters
-" EOL:u21a9,tab:u25b8 space,trail:u2423
-set listchars=eol:↩,tab:▸\ ,trail:␣
+try
+	" EOL:u21a9,tab:u25b8 space,trail:u2423
+	set listchars=eol:↩,tab:▸\ ,trail:␣
+catch
+	set listchars=eol:$,tab:>\ ,trail:^
+endtry
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing
