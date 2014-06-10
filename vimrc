@@ -174,6 +174,14 @@ map <leader>et :tabedit %%
 "let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Disable default EasyMotion mappings
+let g:EasyMotion_do_mapping = 0
+" Activate EasyMotion with space
+nmap <Space> <Plug>(easymotion-s)
+" Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
