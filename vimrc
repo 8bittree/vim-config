@@ -81,6 +81,15 @@ call pathogen#infect()
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715
 "	Textmate-like snippets
 
+" Unite: https://github.com/Shougo/unite.vim
+"	Unite and create user interfaces
+"	This one does a lot of stuff. One of those things is file system
+"	searching
+
+" Vimproc: https://github.com/Shougo/vimproc.vim
+"	Interactive command execution in Vim. Makes Unite be less slow.
+"	Requires native compilation.
+
 call pathogen#helptags() " generate helptags for installed plugins
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -205,6 +214,9 @@ nmap <Space> <Plug>(easymotion-s)
 " Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_use_smartsign_us=1
+
+" Create Unite settings
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
