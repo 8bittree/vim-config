@@ -54,14 +54,32 @@ filetype plugin indent on
 "	puts each plugin into its own directory for easier management
 call pathogen#infect()
 
-" Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715
-"	Textmate-like snippets
+" EasyMotion: https://github.com/Lokaltog/vim-easymotion
+"	Easily move around the window
+
+" Fugitive: https://github.com/tpope/vim-fugitive
+"	A Git wrapper so awesome, it should be illegal
 
 " Gundo: http://sjl.bitbucket.org/gundo.vim/
 "	Easily browse the undo tree
 
+" Keepcase: http://www.vim.org/scripts/script.php?script_id=6
+"	Case hyper-sensitive substitution
+
+" Repeat: https://github.com/tpope/vim-repeat
+"	enable repeating supported plugin maps with "."
+
+" Slimv:
+"
+
 " Solarized: http://ethanschoonover.com/solarized
 "	Colorscheme that works well in light and dark
+
+" Surround: https://github.com/tpope/vim-surround
+"	quoting/parenthesizing made simple
+
+" Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715
+"	Textmate-like snippets
 
 call pathogen#helptags() " generate helptags for installed plugins
 
@@ -88,17 +106,21 @@ set background=dark
 if has("gui_running")
 	set t_Co=256
 	colorscheme solarized
-	if os == "Linux"
-		set gfn=Dejavu\ Sans\ Mono\ 9
-	elseif os == "Darwin"
-		set gfn=Menlo:h10
-	else
-		try
-			set gfn=Dejavu_Sans_Mono:h9
-		catch
-			set gfn=*
-		endtry
-	endif
+	try
+		set gfn=Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu_Sans_Mono:h9,*
+	catch
+		if os == "Linux"
+			set gfn=Dejavu\ Sans\ Mono\ 9
+		elseif os == "Darwin"
+			set gfn=Menlo:h10
+		else
+			try
+				set gfn=Dejavu_Sans_Mono:h9
+			catch
+				set gfn=*
+			endtry
+		endif
+	endtry
 	set guioptions-=T " Don't display the toolbar
 	set guioptions-=e " use ASCII tabs, not GUI tabs (e)
 endif
@@ -173,14 +195,16 @@ map <leader>et :tabedit %%
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" Make Ultisnips friendly with YouCompleteMe
+let g:UltisnipsExpandTrigger="<c-j>"
 
 " Disable default EasyMotion mappings
-let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_do_mapping=0
 " Activate EasyMotion with space
 nmap <Space> <Plug>(easymotion-s)
 " Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_smartcase=1
+let g:EasyMotion_use_smartsign_us=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
