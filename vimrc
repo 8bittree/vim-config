@@ -209,9 +209,10 @@ let g:EasyMotion_use_smartsign_us=1
 
 " Unite mappings
 nnoremap <leader>ew :Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
-nnoremap <leader>es :split %%
-nnoremap <leader>ev :vsplit %%
-nnoremap <leader>et :tabedit %%
+" TODO: this one needs improvement, but the -horizontal option seems to be broken
+nnoremap <leader>es :split<CR>:Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
+nnoremap <leader>ev :Unite -vertical -start-insert -buffer-name=files file_rec/async<CR>
+nnoremap <leader>et :Unite -tab -start-insert -buffer-name=files file_rec/async<CR>
 " Ignore .git directories when searching for a file with Unite
 call unite#custom#source('file_rec/async', 'ignore_pattern', '\.git$')
 " User fuzzy matching in Unite
