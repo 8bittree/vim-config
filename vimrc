@@ -2,14 +2,17 @@
 set nocompatible
 
 " Set up the os variable for later use
-let os = substitute(system('uname'), "\n", "", "")
+let os = substitute(system('uname'), '\n', '', '')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove all autocommands to avoid loading them twice
+autocmd!
+
 " Auto reload .vimrc file when saving it
-if has("autocmd")
-	autocmd bufwritepost .vimrc source $MYVIMRC
+if has('autocmd')
+	autocmd BufWritePost .vimrc source $MYVIMRC
 endif
 
 set history=512 " How many lines of history to remember
@@ -25,6 +28,9 @@ if has('undofile')
 	" Keep working directories clean by putting and undo files in dedicated
 	" directories
 	set undodir=~/.vim/vimundo
+	if has('autocmd')
+		autocmd BufNew COMMIT_MSG setlocal noundofile
+	endif
 endif
 
 " Enable switching away from buffers without saving
@@ -112,24 +118,13 @@ set cursorcolumn " Highlight the column the cursor is on
 " Theme, uses solarized
 syntax on
 set background=dark
-if has("gui_running")
+if has('gui_running')
 	set t_Co=256
 	colorscheme solarized
-	try
-		set gfn=Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu_Sans_Mono:h9,*
-	catch
-		if os == "Linux"
-			set gfn=Dejavu\ Sans\ Mono\ 9
-		elseif os == "Darwin"
-			set gfn=Menlo:h10
-		else
-			try
-				set gfn=Dejavu_Sans_Mono:h9
-			catch
-				set gfn=*
-			endtry
-		endif
-	endtry
+	set gfn=Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu_Sans_Mono:h9,*
+	"if os == "Linux"
+	"	set gfn=Dejavu\ Sans\ Mono\ 9
+	"endif
 	set guioptions-=T " Don't display the toolbar
 	set guioptions-=e " use ASCII tabs, not GUI tabs (e)
 endif
@@ -167,7 +162,7 @@ set textwidth=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key (Re)maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ","
+let mapleader = ','
 
 " Easily clear search to remove highlights
 nmap <silent> <leader>/ :nohlsearch<CR>
@@ -195,17 +190,13 @@ cmap <C-s> <ESC>:up<CR>
 
 " Quickly edit files in the same directory as the current file
 cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
-map <leader>ew :edit %%
-map <leader>es :split %%
-map <leader>ev :vsplit %%
-map <leader>et :tabedit %%
 
 " Make Ultisnips completion keys consistent
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Make Ultisnips friendly with YouCompleteMe
-let g:UltisnipsExpandTrigger="<c-j>"
+let g:UltisnipsExpandTrigger='<c-j>'
 
 " Disable default EasyMotion mappings
 let g:EasyMotion_do_mapping=0
@@ -216,8 +207,17 @@ omap <Space> <Plug>(easymotion-s)
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_use_smartsign_us=1
 
-" Create Unite settings
+" Unite mappings
+nnoremap <leader>ew :Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
+nnoremap <leader>es :split %%
+nnoremap <leader>ev :vsplit %%
+nnoremap <leader>et :tabedit %%
+" Ignore .git directories when searching for a file with Unite
+call unite#custom#source('file_rec/async', 'ignore_pattern', '\.git$')
+" User fuzzy matching in Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" Better Unite sorting
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
