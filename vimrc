@@ -191,12 +191,8 @@ cmap <C-s> <ESC>:up<CR>
 " Quickly edit files in the same directory as the current file
 cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 
-" Make Ultisnips completion keys consistent
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Make Ultisnips friendly with YouCompleteMe
-let g:UltisnipsExpandTrigger='<c-j>'
+let g:UltiSnipsExpandTrigger='<C-j>'
 
 " Disable default EasyMotion mappings
 let g:EasyMotion_do_mapping=0
@@ -213,8 +209,8 @@ nnoremap <leader>ew :Unite -no-split -start-insert -buffer-name=files file_rec/a
 nnoremap <leader>es :split<CR>:Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
 nnoremap <leader>ev :Unite -vertical -start-insert -buffer-name=files file_rec/async<CR>
 nnoremap <leader>et :Unite -tab -start-insert -buffer-name=files file_rec/async<CR>
-" Ignore .git directories when searching for a file with Unite
-call unite#custom#source('file_rec/async', 'ignore_pattern', '\.git$')
+" Ignore VCS directories when searching for a file with Unite
+call unite#custom#source('file_rec/async', 'ignore_pattern', '\.git$|\.svn')
 " User fuzzy matching in Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Better Unite sorting
