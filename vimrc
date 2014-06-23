@@ -210,7 +210,7 @@ nnoremap <leader>es :split<CR>:Unite -no-split -start-insert -buffer-name=files 
 nnoremap <leader>ev :Unite -vertical -start-insert -buffer-name=files file_rec/async<CR>
 nnoremap <leader>et :Unite -tab -start-insert -buffer-name=files file_rec/async<CR>
 " Ignore VCS directories when searching for a file with Unite
-call unite#custom#source('file_rec/async', 'ignore_pattern', '\.git$|\.svn')
+call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git\|\.svn\|pyc$\|\.swp\)')
 " User fuzzy matching in Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Better Unite sorting
