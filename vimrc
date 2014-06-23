@@ -121,7 +121,7 @@ set background=dark
 if has('gui_running')
 	set t_Co=256
 	colorscheme solarized
-	set gfn=Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu_Sans_Mono:h9,*
+	set gfn=Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu_Sans_Mono:h9,Bitstream\ Vera\ Sans\ Mono\ 9,*
 	"if os == "Linux"
 	"	set gfn=Dejavu\ Sans\ Mono\ 9
 	"endif
