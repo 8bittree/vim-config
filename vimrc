@@ -1,8 +1,33 @@
+" vim: fdm=marker
 """"" Using VIM, not vi, this must be first
 set nocompatible
 
-" Set up the os variable for later use
-let os = substitute(system('uname'), '\n', '', '')
+" Detect OS {{{
+"let os = substitute(system('uname'), '\n', '', '')
+" New detection scheme from github.com/bling/dotvim/master/vimrc
+let s:is_windows = has('win32') || has('win64')
+let s:is_cygwin = has('win32unix')
+let s:is_macvim = has('gui_macvim')
+"}}}
+
+" Set up neobundle {{{
+if has('vim_starting')
+	" Include neobundle in the rtp
+	if s:is_windows
+		let s:bundle_dir="$HOME/vimfiles/bundle"
+	else
+		let s:bundle_dir="$HOME/.vim/bundle"
+	endif
+	let &runtimepath=&runtimepath.','.s:bundle_dir.'/neobundle.vim'
+endif
+call neobundle#begin(s:bundle_dir)
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+call neobundle#end()
+" Generate helptags
+NeoBundleDocs
+"}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
@@ -56,10 +81,6 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins used
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen: http://www.vim.org/scripts/script.php?script_id=2332
-"	puts each plugin into its own directory for easier management
-call pathogen#infect()
-
 " EasyMotion: https://github.com/Lokaltog/vim-easymotion
 "	Easily move around the window
 
@@ -95,9 +116,6 @@ call pathogen#infect()
 " Vimproc: https://github.com/Shougo/vimproc.vim
 "	Interactive command execution in Vim. Makes Unite be less slow.
 "	Requires native compilation.
-
-call pathogen#helptags() " generate helptags for installed plugins
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
