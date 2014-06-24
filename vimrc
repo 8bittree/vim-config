@@ -79,6 +79,7 @@ endif
 NeoBundle 'mbbill/undotree', { 'rev' : 'fe9aa1595e' }
 " Easily toggle the undotree window
 nmap <leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1
 "}}}
 
 " Unite: https://github.com/Shougo/unite.vim {{{
