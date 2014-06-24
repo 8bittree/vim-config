@@ -138,7 +138,15 @@ syntax on
 set background=dark
 if has('gui_running')
 	set t_Co=256
-	colorscheme solarized
+	try
+		colorscheme solarized
+	catch
+		try
+			colorscheme molokai_mod
+		catch
+			colorscheme herald
+		endtry
+	endtry
 	set gfn=Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu_Sans_Mono:h9,*
 	"if os == "Linux"
 	"	set gfn=Dejavu\ Sans\ Mono\ 9
