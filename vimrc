@@ -107,6 +107,14 @@ if has("lua")
 	"	Quick Lua-based autocompletion
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#enable_smart_case = 1
+	if !exists('g:neocomplete#sources')
+		let g:neocomplete#sources = {}
+	endif
+	let g:neocomplete#sources._ = ['buffer', 'syntax']
+	if has("python") || has("python3")
+		let g:neocomplete#sources._ += ['Ultisnips']
+	endif
+	let g:neocomplete#sources.vim = ['vim']
 	NeoBundle 'Shougo/neocomplete.vim', { 'rev' : 'dd936527b5' }
 	"}}}
 else
