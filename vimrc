@@ -18,7 +18,7 @@ if has('vim_starting')
 	else
 		let s:bundle_dir="$HOME/.vim/bundle"
 	endif
-	let &runtimepath=&runtimepath.','.s:bundle_dir.'/neobundle.vim'
+	let &runtimepath.=','.s:bundle_dir.'/neobundle.vim'
 endif
 call neobundle#begin(s:bundle_dir)
 " Let NeoBundle manage NeoBundle
@@ -30,56 +30,7 @@ NeoBundleDocs
 "}}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove all autocommands to avoid loading them twice
-autocmd!
-
-" Auto reload .vimrc file when saving it
-if has('autocmd')
-	autocmd BufWritePost .vimrc source $MYVIMRC
-endif
-
-set history=512 " How many lines of history to remember
-
-" Don't make a backup file
-set nobackup
-" Do make a swap file
-set swapfile
-
-if has('undofile')
-	" Make an undo file for persistent undo tree
-	set undofile
-	" Keep working directories clean by putting and undo files in dedicated
-	" directories
-	set undodir=~/.vim/vimundo
-	if has('autocmd')
-		autocmd BufNew COMMIT_MSG setlocal noundofile
-	endif
-endif
-
-" Enable switching away from buffers without saving
-set hidden
-
-set autoread " Update buffer when a file is changed from the outside
-
-" Tabs (put here instead of Editing for filetype settings overwriting)
-" Use :retab! to make an existing file obey these settings
-set tabstop=4 " Number of columns a tab is represented by
-set shiftwidth=4 " Number of columns to move text when using < and >
-set softtabstop=4 " see :help softtabstop
-set noexpandtab " Don't expand tabs into spaces
-
-" Autoindentation (here for the same reason as tabs)
-set autoindent " keep the previous line's indentation
-set smartindent " keeps previous line's indent, indent line after {, puts a } on a new line at same level as matching {
-
-" Enable filetype detection, filetype specific plugins, and filetype specific
-" indentation
-filetype plugin indent on
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins used
+" Plugins used {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyMotion: https://github.com/Lokaltog/vim-easymotion
 "	Easily move around the window
@@ -116,8 +67,61 @@ filetype plugin indent on
 " Vimproc: https://github.com/Shougo/vimproc.vim
 "	Interactive command execution in Vim. Makes Unite be less slow.
 "	Requires native compilation.
+"}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UI
+" General {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove all autocommands to avoid loading them twice
+autocmd!
+
+" Auto reload .vimrc file when saving it
+if has('autocmd')
+	autocmd BufWritePost .vimrc source $MYVIMRC
+endif
+
+set history=512 " How many lines of history to remember
+
+" Don't make a backup file
+set nobackup
+" Do make a swap file
+set swapfile
+
+" Undo persistence {{{
+if has('undofile')
+	" Make an undo file for persistent undo tree
+	set undofile
+	" Keep working directories clean by putting and undo files in dedicated
+	" directories
+	set undodir=~/.vim/vimundo
+	if has('autocmd')
+		autocmd BufNew COMMIT_MSG setlocal noundofile
+	endif
+endif
+"}}}
+
+" Enable switching away from buffers without saving
+set hidden
+
+set autoread " Update buffer when a file is changed from the outside
+
+" Tabs (put here instead of Editing for filetype settings overwriting) {{{
+" Use :retab! to make an existing file obey these settings
+set tabstop=4 " Number of columns a tab is represented by
+set shiftwidth=4 " Number of columns to move text when using < and >
+set softtabstop=4 " see :help softtabstop
+set noexpandtab " Don't expand tabs into spaces
+"}}}
+
+" Autoindentation (here for the same reason as tabs)
+set autoindent " keep the previous line's indentation
+set smartindent " keeps previous line's indent, indent line after {, puts a } on a new line at same level as matching {
+
+" Enable filetype detection, filetype specific plugins, and filetype specific
+" indentation
+filetype plugin indent on
+"}}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UI {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=3	" Keeps at least 3 visible lines around the cursor at all times
 
@@ -133,7 +137,7 @@ set laststatus=2 " Turn on the statusline
 set cursorline " Highlight the line the cursor is on
 set cursorcolumn " Highlight the column the cursor is on
 
-" Theme, uses solarized
+" Theme, uses solarized {{{
 syntax on
 set background=dark
 if has('gui_running')
@@ -157,11 +161,14 @@ endif
 if $TERM == 'xterm-256color'
 	colorscheme solarized
 endif
+"}}}
 
+" Search {{{
 set incsearch " Incremental search (search as you type)
 set ignorecase " Ignore case when searching
 set smartcase " Don't ignore case when typing capitals in the search term
 set hlsearch " Highlight search matches
+"}}}
 
 set wildmenu " Show matches for command completion in status bar
 set wildmode=longest:full " Command completion, add longest match first then sequentially match complete options
@@ -169,24 +176,25 @@ set wildmode=longest:full " Command completion, add longest match first then seq
 set mouse=a " Enable mouse usage
 set mousehide " Hide mouse while typing
 
-" Configure whitespace characters
+" Configure whitespace characters {{{
 try
 	" EOL:u21a9,tab:u25b8 space,trail:u2423
 	set listchars=eol:↩,tab:▸\ ,trail:␣
 catch
 	set listchars=eol:$,tab:>\ ,trail:^
 endtry
-
+"}}}
+"}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Editing
+" Editing {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backspace=indent,eol,start " allow backspacing over everything
 
 " Disable automatic hard text wrapping
 set textwidth=0
-
+"}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Key (Re)maps
+" Key (Re)maps {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
 
@@ -203,11 +211,12 @@ nmap <leader>u :GundoToggle<CR>
 " nnoremap makes sure that ; does what : originally did, regardless of any remmapping of :
 nnoremap ; :
 
-" Better window navigation
+" Better window navigation {{{
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+"}}}
 
 " Save with Ctrl-s
 nmap <C-s> :up<CR>
@@ -241,7 +250,7 @@ call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git\|
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Better Unite sorting
 call unite#filters#sorter_default#use(['sorter_rank'])
-
+"}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
