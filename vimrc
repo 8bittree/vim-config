@@ -22,52 +22,106 @@ if has('vim_starting')
 endif
 call neobundle#begin(s:bundle_dir)
 " Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-call neobundle#end()
-" Generate helptags
-NeoBundleDocs
-"}}}
+NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : '9ebad360aa' }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins used {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" EasyMotion: https://github.com/Lokaltog/vim-easymotion
+" Abolish: http://github.com/tpope/vim-abolish {{{
+" Changing multiple variants of a word
+NeoBundle 'tpope/vim-abolish', { 'rev' : 'f0d785d916' }
+"}}}
+
+" EasyMotion: https://github.com/Lokaltog/vim-easymotion {{{
 "	Easily move around the window
+NeoBundle 'Lokaltog/vim-easymotion', { 'rev' : '42e02a741c' }
+" Disable default EasyMotion mappings
+let g:EasyMotion_do_mapping=0
+" Activate EasyMotion with space
+nmap <Space> <Plug>(easymotion-s)
+omap <Space> <Plug>(easymotion-s)
+" Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
+let g:EasyMotion_smartcase=1
+let g:EasyMotion_use_smartsign_us=1
+"}}}
 
-" Fugitive: https://github.com/tpope/vim-fugitive
+" Fugitive: https://github.com/tpope/vim-fugitive "{{{
 "	A Git wrapper so awesome, it should be illegal
+NeoBundle 'tpope/vim-fugitive', { 'rev' : '123d2e096d' }
+"}}}
 
-" Gundo: http://sjl.bitbucket.org/gundo.vim/
-"	Easily browse the undo tree
-
-" Keepcase: http://www.vim.org/scripts/script.php?script_id=6
-"	Case hyper-sensitive substitution
-
-" Repeat: https://github.com/tpope/vim-repeat
+" Repeat: https://github.com/tpope/vim-repeat {{{
 "	enable repeating supported plugin maps with "."
+NeoBundle 'tpope/vim-repeat', { 'rev' : '2a3c5f8e3c' }
+"}}}
 
 " Slimv:
 "
 
-" Solarized: http://ethanschoonover.com/solarized
+" Solarized: http://ethanschoonover.com/solarized {{{
 "	Colorscheme that works well in light and dark
+NeoBundle 'altercation/vim-colors-solarized', { 'rev' : '528a59f26d' }
+"}}}
 
-" Surround: https://github.com/tpope/vim-surround
+" Surround: https://github.com/tpope/vim-surround {{{
 "	quoting/parenthesizing made simple
+"}}}
 
-" Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715
+" Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715 {{{
 "	Textmate-like snippets
+if has('python') || has('python3')
+	NeoBundle 'SirVer/ultisnips', { 'rev' : '7b8641e1fd' }
+endif
+"}}}
 
-" Unite: https://github.com/Shougo/unite.vim
+" Undotree: http://github.com/mbbill/undotree {{{
+"	Easily browse the undo tree
+NeoBundle 'mbbill/undotree', { 'rev' : 'fe9aa1595e' }
+" Easily toggle the undotree window
+nmap <leader>u :UndotreeToggle<CR>
+"}}}
+
+" Unite: https://github.com/Shougo/unite.vim {{{
 "	Unite and create user interfaces
 "	This one does a lot of stuff. One of those things is file system
 "	searching
+NeoBundle 'Shougo/unite.vim', { 'rev' : '9e8b314a19' }
+"}}}
 
-" Vimproc: https://github.com/Shougo/vimproc.vim
+" Vimproc: https://github.com/Shougo/vimproc.vim "{{{
 "	Interactive command execution in Vim. Makes Unite be less slow.
 "	Requires native compilation.
+NeoBundle 'Shougo/vimproc.vim', { 'rev' : '429ff5d161',
+			\ 'build' : {
+			\	'windows' : 'mingw32-make -f make_mingw32.mak',
+			\	'cygwin' : 'make -f make_cygwin.mak',
+			\	'mac' : 'make -f make_mac.mak',
+			\	'unix' : 'make -f make_unix.mak',
+			\	},
+			\ } "}}}
+
+" Autocompletion
+if has("lua")
+	" Neocomplete: https://github.com/Shougo/neocomplete.vim {{{
+	"	Quick Lua-based autocompletion
+	let g:neocomplete#enable_at_startup = 1
+	let g:neocomplete#enable_smart_case = 1
+	NeoBundle 'Shougo/neocomplete.vim', { 'rev' : 'dd936527b5' }
+	"}}}
+else
+	" Neocomplcache: https://github.com/Shougo/neocomplcache.vim {{{
+	"	Slow VimScript-based autocompletion
+	NeoBundle 'Shougo/neocomplecache.vim', { 'rev' : '50358bb666' }
+	"}}}
+endif
 "}}}
+
+call neobundle#end()
+NeoBundleCheck
+" Generate helptags
+NeoBundleDocs
+"}}}
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -204,9 +258,6 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Toggle the display of whitespace characters
 nmap <leader>l :set list!<cr>
 
-" Easily toggle Gundo window
-nmap <leader>u :GundoToggle<CR>
-
 " Just type ; instead of : to enter a command
 " nnoremap makes sure that ; does what : originally did, regardless of any remmapping of :
 nnoremap ; :
@@ -226,19 +277,6 @@ cmap <C-s> <ESC>:up<CR>
 " Quickly edit files in the same directory as the current file
 cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 
-" Make Ultisnips friendly with YouCompleteMe
-let g:UltiSnipsExpandTrigger='<C-j>'
-
-" Disable default EasyMotion mappings
-let g:EasyMotion_do_mapping=0
-" Activate EasyMotion with space
-nmap <Space> <Plug>(easymotion-s)
-omap <Space> <Plug>(easymotion-s)
-" Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
-let g:EasyMotion_smartcase=1
-let g:EasyMotion_use_smartsign_us=1
-
-" Unite mappings
 nnoremap <leader>ew :Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
 " TODO: this one needs improvement, but the -horizontal option seems to be broken
 nnoremap <leader>es :split<CR>:Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
