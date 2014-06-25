@@ -10,6 +10,8 @@ let s:is_cygwin = has('win32unix')
 let s:is_macvim = has('gui_macvim')
 "}}}
 
+let mapleader = ','
+
 " Set up neobundle {{{
 if has('vim_starting')
 	" Include neobundle in the rtp
@@ -110,7 +112,7 @@ if has("lua")
 	if !exists('g:neocomplete#sources')
 		let g:neocomplete#sources = {}
 	endif
-	let g:neocomplete#sources._ = ['buffer', 'syntax']
+	let g:neocomplete#sources._ = ['buffer', 'member', 'syntax']
 	if has("python") || has("python3")
 		let g:neocomplete#sources._ += ['Ultisnips']
 	endif
@@ -150,7 +152,7 @@ set nobackup
 set swapfile
 
 " Undo persistence {{{
-if has('undofile')
+if has('persistent_undo')
 	" Make an undo file for persistent undo tree
 	set undofile
 	" Keep working directories clean by putting and undo files in dedicated
@@ -259,7 +261,6 @@ set textwidth=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key (Re)maps {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ','
 
 " Easily clear search to remove highlights
 nmap <silent> <leader>/ :nohlsearch<CR>
