@@ -16,13 +16,13 @@ let mapleader = ','
 if has('vim_starting')
 	" Include neobundle in the rtp
 	if s:is_windows
-		let s:bundle_dir="$HOME/vimfiles/bundle"
+		let s:dotvim_dir=$HOME.'/vimfiles'
 	else
-		let s:bundle_dir="$HOME/.vim/bundle"
+		let s:dotvim_dir=$HOME.'/.vim'
 	endif
-	let &runtimepath.=','.s:bundle_dir.'/neobundle.vim'
+	let &runtimepath.=','.s:dotvim_dir.'/bundle/neobundle.vim'
 endif
-call neobundle#begin(s:bundle_dir)
+call neobundle#begin(s:dotvim_dir.'/bundle')
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : '9ebad360aa' }
 
@@ -50,6 +50,8 @@ let g:EasyMotion_use_smartsign_us=1
 " Fugitive: https://github.com/tpope/vim-fugitive "{{{
 "	A Git wrapper so awesome, it should be illegal
 NeoBundle 'tpope/vim-fugitive', { 'rev' : '123d2e096d' }
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :GCommit<CR>
 "}}}
 
 " Repeat: https://github.com/tpope/vim-repeat {{{
@@ -150,6 +152,7 @@ set history=512 " How many lines of history to remember
 set nobackup
 " Do make a swap file
 set swapfile
+let &directory=s:dotvim_dir.'/vimswp//'
 
 " Undo persistence {{{
 if has('persistent_undo')
@@ -157,7 +160,7 @@ if has('persistent_undo')
 	set undofile
 	" Keep working directories clean by putting and undo files in dedicated
 	" directories
-	set undodir=~/.vim/vimundo
+	let &undodir=s:dotvim_dir.'/vimundo'
 	if has('autocmd')
 		autocmd BufNew COMMIT_MSG setlocal noundofile
 	endif
@@ -199,8 +202,15 @@ endif
 set statusline=%m\ %t\ %y\ %r%=Buf:%n\ Char:%b\ Col:%c%V\ Line:%l/%L
 set laststatus=2 " Turn on the statusline
 
-set cursorline " Highlight the line the cursor is on
-set cursorcolumn " Highlight the column the cursor is on
+if has('autocmd')
+	autocmd WinLeave * setlocal nocursorline
+	autocmd WinLeave * setlocal nocursorcolumn
+	autocmd WinEnter * setlocal cursorline
+	autocmd WinEnter * setlocal cursorcolumn
+else
+	set cursorline " Highlight the line the cursor is on
+	set cursorcolumn " Highlight the column the cursor is on
+endif
 
 " Theme, uses solarized {{{
 syntax on
