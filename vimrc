@@ -69,6 +69,7 @@ NeoBundle 'altercation/vim-colors-solarized', { 'rev' : '528a59f26d' }
 
 " Surround: https://github.com/tpope/vim-surround {{{
 "	quoting/parenthesizing made simple
+NeoBundle 'tpope/vim-surround', { 'rev' : 'f85cb4e788' }
 "}}}
 
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715 {{{
@@ -297,13 +298,17 @@ cmap <C-s> <ESC>:up<CR>
 " Quickly edit files in the same directory as the current file
 cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 
+" Unite settings
+if executable('ag')
+	let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --hidden --ignore ".git*|.svn*" -g ""'
+endif
 nnoremap <leader>ew :Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
 " TODO: this one needs improvement, but the -horizontal option seems to be broken
 nnoremap <leader>es :split<CR>:Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
 nnoremap <leader>ev :Unite -vertical -start-insert -buffer-name=files file_rec/async<CR>
 nnoremap <leader>et :Unite -tab -start-insert -buffer-name=files file_rec/async<CR>
 " Ignore VCS directories when searching for a file with Unite
-call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git\|\.svn\|pyc$\|\.swp\)')
+"call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git\|\.svn\|pyc$\|\.swp\)')
 " User fuzzy matching in Unite
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Better Unite sorting
