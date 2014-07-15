@@ -125,7 +125,9 @@ if has("lua")
 else
 	" Neocomplcache: https://github.com/Shougo/neocomplcache.vim {{{
 	"	Slow VimScript-based autocompletion
-	NeoBundle 'Shougo/neocomplecache.vim', { 'rev' : '50358bb666' }
+	NeoBundle 'Shougo/neocomplcache.vim', { 'rev' : '50358bb666' }
+	let g:neocomplcache_enable_at_startup = 1
+	let g:neocomplcache_enable_smart_case = 1
 	"}}}
 endif
 "}}}
