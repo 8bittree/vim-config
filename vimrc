@@ -61,8 +61,15 @@ nnoremap <Leader>gc :GCommit<CR>
 NeoBundle 'tpope/vim-repeat', { 'rev' : '2a3c5f8e3c' }
 "}}}
 
-" Slimv:
-"
+" Slimv: https://github.com/kovisoft/slimv {{{
+"	Superior Lisp Interaction Mode for Vim
+if has('python')
+	if executable('ccl64') && s:is_macvim
+		let g:slimv_swank_cmd='!osascript -e "tell application \"Terminal\" to do script \"ccl64 -l ~/.vim/bundle/slimv_3c52652519/slime/start-swank.lisp\""'
+	endif
+	NeoBundle 'kovisoft/slimv', { 'rev' : '3c52652519' }
+endif
+"}}}
 
 " Solarized: http://ethanschoonover.com/solarized {{{
 "	Colorscheme that works well in light and dark
