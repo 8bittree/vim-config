@@ -36,15 +36,17 @@ NeoBundle 'tpope/vim-abolish', { 'rev' : 'f0d785d916' }
 
 " EasyMotion: https://github.com/Lokaltog/vim-easymotion {{{
 "	Easily move around the window
-NeoBundle 'Lokaltog/vim-easymotion', { 'rev' : '42e02a741c' }
-" Disable default EasyMotion mappings
-let g:EasyMotion_do_mapping=0
-" Activate EasyMotion with space
-nmap <Space> <Plug>(easymotion-s)
-omap <Space> <Plug>(easymotion-s)
-" Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
-let g:EasyMotion_smartcase=1
-let g:EasyMotion_use_smartsign_us=1
+if version >= 703
+	NeoBundle 'Lokaltog/vim-easymotion', { 'rev' : '42e02a741c' }
+	" Disable default EasyMotion mappings
+	let g:EasyMotion_do_mapping=0
+	" Activate EasyMotion with space
+	nmap <Space> <Plug>(easymotion-s)
+	omap <Space> <Plug>(easymotion-s)
+	" Enable EasyMotion lazy shift key usage for letters, numbers, and symbols
+	let g:EasyMotion_smartcase=1
+	let g:EasyMotion_use_smartsign_us=1
+endif
 "}}}
 
 " Fugitive: https://github.com/tpope/vim-fugitive "{{{
