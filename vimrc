@@ -56,6 +56,11 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :GCommit<CR>
 "}}}
 
+" Rainbow: https://github.com/luochen1990/rainbow
+"	Rainbowifies parenthesis, brackets, tags, etc.
+let g:rainbow_active=1
+NeoBundle 'luochen1990/rainbow', { 'rev' : '695eb22e53' }
+
 " Repeat: https://github.com/tpope/vim-repeat {{{
 "	enable repeating supported plugin maps with "."
 NeoBundle 'tpope/vim-repeat', { 'rev' : '2a3c5f8e3c' }
