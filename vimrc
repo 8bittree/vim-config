@@ -53,7 +53,7 @@ endif
 "	A Git wrapper so awesome, it should be illegal
 NeoBundle 'tpope/vim-fugitive', { 'rev' : '123d2e096d' }
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :GCommit<CR>
+nnoremap <Leader>gc :Gcommit<CR>
 "}}}
 
 " Rainbow: https://github.com/luochen1990/rainbow
