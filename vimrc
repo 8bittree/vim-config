@@ -90,6 +90,10 @@ NeoBundle 'tpope/vim-surround', { 'rev' : 'f85cb4e788' }
 "	Textmate-like snippets
 if has('python') || has('python3')
 	NeoBundle 'SirVer/ultisnips', { 'rev' : '7b8641e1fd' }
+	NeoBundle 'honza/vim-snippets', { 'rev' : 'e82994ff5a'}
+	if !has('lua')
+		NeoBundle 'JazzCore/neocomplcache-ultisnips', { 'rev' : 'ac885e94d2' }
+	endif
 endif
 "}}}
 
@@ -330,6 +334,8 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Better Unite sorting
 call unite#filters#sorter_default#use(['sorter_rank'])
 "}}}
+
+let g:EclimCompletionMethod = 'omnifunc'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
