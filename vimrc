@@ -135,7 +135,7 @@ if has("lua")
 	endif
 	let g:neocomplete#sources._ = ['buffer', 'member', 'syntax']
 	if has("python") || has("python3")
-		let g:neocomplete#sources._ += ['Ultisnips']
+		let g:neocomplete#sources._ += ['ultisnips']
 	endif
 	let g:neocomplete#sources.vim = ['vim']
 	NeoBundle 'Shougo/neocomplete.vim', { 'rev' : 'dd936527b5' }
