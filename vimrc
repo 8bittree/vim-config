@@ -66,6 +66,11 @@ NeoBundle 'luochen1990/rainbow', { 'rev' : '695eb22e53' }
 NeoBundle 'tpope/vim-repeat', { 'rev' : '2a3c5f8e3c' }
 "}}}
 
+" Rust: https://github.com/rust-lang/rust.vim {{{
+"	Rust language support
+NeoBundle 'rust-lang/rust.vim', { 'rev' : '4a211a458f' }
+"}}}
+
 " Slimv: https://github.com/kovisoft/slimv {{{
 "	Superior Lisp Interaction Mode for Vim
 if has('python')
