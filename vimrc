@@ -56,6 +56,10 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 "}}}
 
+" GLSL: https://github.com/tikhomirov/vim-glsl
+"	OpenGL Shading language support
+NeoBundle 'tikhomirov/vim-glsl', { 'rev' : '4459d197de' }
+
 " Rainbow: https://github.com/luochen1990/rainbow
 "	Rainbowifies parenthesis, brackets, tags, etc.
 let g:rainbow_active=1
