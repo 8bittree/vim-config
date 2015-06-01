@@ -95,6 +95,15 @@ NeoBundle 'altercation/vim-colors-solarized', { 'rev' : '528a59f26d' }
 NeoBundle 'tpope/vim-surround', { 'rev' : 'f85cb4e788' }
 "}}}
 
+" Syntastic: https://github.com/scrooloose/syntastic {{{
+"	Syntax and style checking
+NeoBundle 'scrooloose/syntastic', { 'rev' : '5c6e78a271' }
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+" }}}
+
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715 {{{
 "	Textmate-like snippets
 if has('python') || has('python3')
