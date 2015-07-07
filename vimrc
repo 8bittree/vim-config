@@ -336,6 +336,9 @@ cmap <C-s> <ESC>:up<CR>
 " Quickly edit files in the same directory as the current file
 cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 
+" New lines start a new undo step
+inoremap <CR> <C-G>u<CR>
+
 " Unite settings
 if executable('ag')
 	let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --hidden --ignore ".git*|.svn*" -g ""'
