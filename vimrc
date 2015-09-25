@@ -63,7 +63,7 @@ NeoBundle 'tikhomirov/vim-glsl', { 'rev' : '4459d197de' }
 " Rainbow: https://github.com/luochen1990/rainbow
 "	Rainbowifies parenthesis, brackets, tags, etc.
 let g:rainbow_active=1
-NeoBundle 'luochen1990/rainbow', { 'rev' : '695eb22e53' }
+NeoBundle 'luochen1990/rainbow', { 'rev' : '18eeea32d9' }
 
 " Repeat: https://github.com/tpope/vim-repeat {{{
 "	enable repeating supported plugin maps with "."
