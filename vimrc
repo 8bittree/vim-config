@@ -142,6 +142,11 @@ NeoBundle 'Shougo/vimproc.vim', { 'rev' : '429ff5d161',
 			\	},
 			\ } "}}}
 
+" Vim-Toml: https://github.com/cespare/vim-toml {{{
+" Syntax support for TOML
+NeoBundle 'cespare/vim-toml', { 'rev' : '190a55c2dd' }
+" }}}
+
 " Autocompletion
 if has("lua")
 	" Neocomplete: https://github.com/Shougo/neocomplete.vim {{{
