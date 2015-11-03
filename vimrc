@@ -323,8 +323,12 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 nmap <leader>l :set list!<cr>
 
 " Just type ; instead of : to enter a command
+" Opens the command window instead of command line, thus enabling full vim
+" editing capabilities. Also jumps straight to insert mode for convenience.
+" TODO: set up smart auto-complete for stuff like :help in the command window.
+" For now, using : to access the command line still has auto-complete
 " nnoremap makes sure that ; does what : originally did, regardless of any remmapping of :
-nnoremap ; :
+nnoremap ; q:i
 
 " Better window navigation {{{
 nnoremap <C-h> <C-w>h
