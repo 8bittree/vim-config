@@ -276,6 +276,11 @@ if has('gui_running')
 	"endif
 	set guioptions-=T " Don't display the toolbar
 	set guioptions-=e " use ASCII tabs, not GUI tabs (e)
+	" Don't use vertical scrollbars
+	set guioptions-=r
+	set guioptions-=R
+	set guioptions-=l
+	set guioptions-=L
 endif
 if $TERM == 'xterm-256color' || $TERM == 'screen'
 	set t_Co=256
