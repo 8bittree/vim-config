@@ -277,8 +277,9 @@ if has('gui_running')
 	set guioptions-=T " Don't display the toolbar
 	set guioptions-=e " use ASCII tabs, not GUI tabs (e)
 endif
-if $TERM == 'xterm-256color'
-	colorscheme solarized
+if $TERM == 'xterm-256color' || $TERM == 'screen'
+	set t_Co=256
+	colorscheme molokai_mod
 endif
 "}}}
 
