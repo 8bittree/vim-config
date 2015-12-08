@@ -282,9 +282,9 @@ if has('gui_running')
 	set guioptions-=l
 	set guioptions-=L
 endif
-if $TERM == 'xterm-256color' || $TERM == 'screen'
+if $TERM == 'xterm-256color' || $TERM =~ 'screen.*'
 	set t_Co=256
-	colorscheme molokai_mod
+	colorscheme molokai_mod " Seems to work better in a terminal than Solarized
 endif
 "}}}
 
