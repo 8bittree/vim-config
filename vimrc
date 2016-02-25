@@ -56,6 +56,11 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 "}}}
 
+" Gitgutter: https://github.com/airblade/vim-gitgutter {{{
+"	Show a git diff in the sign column, stage/revert hunks
+NeoBundle 'airblade/vim-gitgutter', { 'rev' : '0af9f2a' }
+"}}}
+
 " GLSL: https://github.com/tikhomirov/vim-glsl
 "	OpenGL Shading language support
 NeoBundle 'tikhomirov/vim-glsl', { 'rev' : '4459d197de' }
