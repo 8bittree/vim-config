@@ -65,6 +65,11 @@ NeoBundle 'airblade/vim-gitgutter', { 'rev' : '0af9f2a' }
 "	OpenGL Shading language support
 NeoBundle 'tikhomirov/vim-glsl', { 'rev' : '4459d197de' }
 
+" Obsession: https://github.com/tpope/vim-obsession {{{
+"	Automatic session management
+NeoBundle 'tpope/vim-obsession', { 'rev': 'ad1ef9a0db9' }
+"}}}
+
 " Rainbow: https://github.com/luochen1990/rainbow
 "	Rainbowifies parenthesis, brackets, tags, etc.
 let g:rainbow_active=1
