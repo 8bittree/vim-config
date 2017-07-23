@@ -129,25 +129,6 @@ nmap <leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1
 "}}}
 
-" Unite: https://github.com/Shougo/unite.vim {{{
-"	Unite and create user interfaces
-"	This one does a lot of stuff. One of those things is file system
-"	searching
-"NeoBundle 'Shougo/unite.vim'
-"}}}
-
-" Vimproc: https://github.com/Shougo/vimproc.vim "{{{
-"	Interactive command execution in Vim. Makes Unite be less slow.
-"	Requires native compilation.
-"NeoBundle 'Shougo/vimproc.vim', {
-"			\ 'build' : {
-"			\	'windows' : 'mingw32-make -f make_mingw32.mak',
-"			\	'cygwin' : 'make -f make_cygwin.mak',
-"			\	'mac' : 'make -f make_mac.mak',
-"			\	'unix' : 'make -f make_unix.mak',
-"			\	},
-"			\ } "}}}
-
 " Vim-Toml: https://github.com/cespare/vim-toml {{{
 " Syntax support for TOML
 Plug 'cespare/vim-toml'
@@ -355,23 +336,6 @@ cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 
 " New lines start a new undo step
 inoremap <CR> <C-G>u<CR>
-
-" Unite settings
-if executable('ag')
-	let g:unite_source_rec_async_command='ag --follow --nocolor --nogroup --hidden --ignore ".git*|.svn*" -g ""'
-endif
-nnoremap <leader>ew :Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
-" TODO: this one needs improvement, but the -horizontal option seems to be broken
-nnoremap <leader>es :split<CR>:Unite -no-split -start-insert -buffer-name=files file_rec/async<CR>
-nnoremap <leader>ev :Unite -vertical -start-insert -buffer-name=files file_rec/async<CR>
-nnoremap <leader>et :Unite -tab -start-insert -buffer-name=files file_rec/async<CR>
-" Ignore VCS directories when searching for a file with Unite
-"call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern', '\(\.git\|\.svn\|pyc$\|\.swp\)')
-" User fuzzy matching in Unite
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" Better Unite sorting
-call unite#filters#sorter_default#use(['sorter_rank'])
-"}}}
 
 let g:EclimCompletionMethod = 'omnifunc'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
