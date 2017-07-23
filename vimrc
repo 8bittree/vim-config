@@ -19,24 +19,27 @@ if has('vim_starting')
 	else
 		let s:dotvim_dir=$HOME.'/.vim'
 	endif
-	let &runtimepath.=','.s:dotvim_dir.'/bundle/neobundle.vim'
+	"let &runtimepath.=','.s:dotvim_dir.'/bundle/neobundle.vim'
 endif
-call neobundle#begin(s:dotvim_dir.'/bundle')
+"call neobundle#begin(s:dotvim_dir.'/bundle')
 " Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+"NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Set up Vim-Plug
+call plug#begin()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins used {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abolish: http://github.com/tpope/vim-abolish {{{
 " Changing multiple variants of a word
-NeoBundle 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 "}}}
 
 " EasyMotion: https://github.com/Lokaltog/vim-easymotion {{{
 "	Easily move around the window
 if version >= 703
-	NeoBundle 'Lokaltog/vim-easymotion'
+	Plug 'Lokaltog/vim-easymotion'
 	" Disable default EasyMotion mappings
 	let g:EasyMotion_do_mapping=0
 	" Activate EasyMotion with space
@@ -50,38 +53,38 @@ endif
 
 " Fugitive: https://github.com/tpope/vim-fugitive "{{{
 "	A Git wrapper so awesome, it should be illegal
-NeoBundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 "}}}
 
 " Gitgutter: https://github.com/airblade/vim-gitgutter {{{
 "	Show a git diff in the sign column, stage/revert hunks
-NeoBundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 "}}}
 
 " GLSL: https://github.com/tikhomirov/vim-glsl
 "	OpenGL Shading language support
-NeoBundle 'tikhomirov/vim-glsl'
+Plug 'tikhomirov/vim-glsl'
 
 " Obsession: https://github.com/tpope/vim-obsession {{{
 "	Automatic session management
-NeoBundle 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 "}}}
 
 " Rainbow: https://github.com/luochen1990/rainbow
 "	Rainbowifies parenthesis, brackets, tags, etc.
 let g:rainbow_active=1
-NeoBundle 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 
 " Repeat: https://github.com/tpope/vim-repeat {{{
 "	enable repeating supported plugin maps with "."
-NeoBundle 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 "}}}
 
 " Rust: https://github.com/rust-lang/rust.vim {{{
 "	Rust language support
-NeoBundle 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 "}}}
 
 " Slimv: https://github.com/kovisoft/slimv {{{
@@ -90,23 +93,23 @@ if has('python')
 	if executable('ccl64') && s:is_macvim
 		let g:slimv_swank_cmd='!osascript -e "tell application \"Terminal\" to do script \"ccl64 -l ~/.vim/bundle/slimv_3c52652519/slime/start-swank.lisp\""'
 	endif
-	NeoBundle 'kovisoft/slimv'
+	Plug 'kovisoft/slimv'
 endif
 "}}}
 
 " Solarized: http://ethanschoonover.com/solarized {{{
 "	Colorscheme that works well in light and dark
-NeoBundle 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 "}}}
 
 " Surround: https://github.com/tpope/vim-surround {{{
 "	quoting/parenthesizing made simple
-NeoBundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 "}}}
 
 " Syntastic: https://github.com/scrooloose/syntastic {{{
 "	Syntax and style checking
-NeoBundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=0
@@ -116,17 +119,17 @@ let g:syntastic_check_on_wq=0
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715 {{{
 "	Textmate-like snippets
 if has('python') || has('python3')
-	NeoBundle 'SirVer/ultisnips'
-	NeoBundle 'honza/vim-snippets'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
 	if !has('lua')
-		NeoBundle 'JazzCore/neocomplcache-ultisnips'
+		Plug 'JazzCore/neocomplcache-ultisnips'
 	endif
 endif
 "}}}
 
 " Undotree: http://github.com/mbbill/undotree {{{
 "	Easily browse the undo tree
-NeoBundle 'mbbill/undotree'
+Plug 'mbbill/undotree'
 " Easily toggle the undotree window
 nmap <leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1
@@ -136,24 +139,24 @@ let g:undotree_SetFocusWhenToggle=1
 "	Unite and create user interfaces
 "	This one does a lot of stuff. One of those things is file system
 "	searching
-NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/unite.vim'
 "}}}
 
 " Vimproc: https://github.com/Shougo/vimproc.vim "{{{
 "	Interactive command execution in Vim. Makes Unite be less slow.
 "	Requires native compilation.
-NeoBundle 'Shougo/vimproc.vim', {
-			\ 'build' : {
-			\	'windows' : 'mingw32-make -f make_mingw32.mak',
-			\	'cygwin' : 'make -f make_cygwin.mak',
-			\	'mac' : 'make -f make_mac.mak',
-			\	'unix' : 'make -f make_unix.mak',
-			\	},
-			\ } "}}}
+"NeoBundle 'Shougo/vimproc.vim', {
+"			\ 'build' : {
+"			\	'windows' : 'mingw32-make -f make_mingw32.mak',
+"			\	'cygwin' : 'make -f make_cygwin.mak',
+"			\	'mac' : 'make -f make_mac.mak',
+"			\	'unix' : 'make -f make_unix.mak',
+"			\	},
+"			\ } "}}}
 
 " Vim-Toml: https://github.com/cespare/vim-toml {{{
 " Syntax support for TOML
-NeoBundle 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 " }}}
 
 " Autocompletion
@@ -170,23 +173,24 @@ if has("lua")
 		let g:neocomplete#sources._ += ['ultisnips']
 	endif
 	let g:neocomplete#sources.vim = ['vim']
-	NeoBundle 'Shougo/neocomplete.vim'
+	Plug 'Shougo/neocomplete.vim'
 	"}}}
 else
 	" Neocomplcache: https://github.com/Shougo/neocomplcache.vim {{{
 	"	Slow VimScript-based autocompletion
-	NeoBundle 'Shougo/neocomplcache.vim'
+	Plug 'Shougo/neocomplcache.vim'
 	let g:neocomplcache_enable_at_startup = 1
 	let g:neocomplcache_enable_smart_case = 1
 	"}}}
 endif
 "}}}
 
-call neobundle#end()
-NeoBundleCheck
+"call neobundle#end()
+"NeoBundleCheck
 " Generate helptags
-NeoBundleDocs
+"NeoBundleDocs
 "}}}
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General {{{
