@@ -11,19 +11,13 @@ let s:is_macvim = has('gui_macvim')
 
 let mapleader = ','
 
-" Set up neobundle {{{
 if has('vim_starting')
-	" Include neobundle in the rtp
 	if s:is_windows
 		let s:dotvim_dir=$HOME.'/vimfiles'
 	else
 		let s:dotvim_dir=$HOME.'/.vim'
 	endif
-	"let &runtimepath.=','.s:dotvim_dir.'/bundle/neobundle.vim'
 endif
-"call neobundle#begin(s:dotvim_dir.'/bundle')
-" Let NeoBundle manage NeoBundle
-"NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Set up Vim-Plug
 call plug#begin()
@@ -185,11 +179,6 @@ else
 endif
 "}}}
 
-"call neobundle#end()
-"NeoBundleCheck
-" Generate helptags
-"NeoBundleDocs
-"}}}
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
