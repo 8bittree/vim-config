@@ -1,4 +1,3 @@
-" vim: fdm=marker
 """"" Using VIM, not vi, this must be first
 set nocompatible
 
