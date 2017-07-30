@@ -19,6 +19,11 @@ if has('vim_starting')
 	endif
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Additional files to source
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.vimrc_local
+
 " Set up Vim-Plug
 call plug#begin()
 
@@ -338,11 +343,6 @@ cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
 inoremap <CR> <C-G>u<CR>
 
 let g:EclimCompletionMethod = 'omnifunc'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Additional files to source
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/.vimrc_local
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable directory specific .vimrc w/o allowing arbitrary code execution
