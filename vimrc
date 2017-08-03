@@ -74,6 +74,18 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-obsession'
 "}}}
 
+" Racer: https://github.com/racer-rust/vim-racer {{{
+"	Use Racer for Rust code completion and navigation
+if executable("racer")
+	let g:racer_cmd=$HOME . "/.cargo/bin/racer"
+	Plug 'racer-rust/vim-racer'
+	au FileType rust nmap gd <Plug>(rust-def)
+	au FileType rust nmap gs <Plug>(rust-def-split)
+	au FileType rust nmap gx <Plug>(rust-def-vertical)
+	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+endif
+"}}}
+
 " Rainbow: https://github.com/luochen1990/rainbow
 "	Rainbowifies parenthesis, brackets, tags, etc.
 let g:rainbow_active=1
