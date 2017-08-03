@@ -19,6 +19,9 @@ if has('vim_starting')
 	endif
 endif
 
+" Remove all autocommands to avoid loading them twice
+autocmd!
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Additional files to source
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -170,9 +173,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove all autocommands to avoid loading them twice
-autocmd!
-
 " Auto reload .vimrc file when saving it
 if has('autocmd')
 	autocmd BufWritePost .vimrc source $MYVIMRC
