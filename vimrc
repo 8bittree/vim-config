@@ -245,7 +245,7 @@ endif
 
 " Configure status line
 " modified, file, file type, read only, column, virtual column, line number, lines
-set statusline=%m\ %t\ %y\ %r%=Buf:%n\ Char:%b\ Col:%c%V\ Line:%l/%L
+set statusline=%m\ %t\ %y\ %r%=Buf:%n\ Char:%B\ Col:%c%V\ Line:%l/%L
 set laststatus=2 " Turn on the statusline
 
 if has('autocmd')
