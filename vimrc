@@ -223,7 +223,6 @@ set autoread " Update buffer when a file is changed from the outside
 set tabstop=4 " Number of columns a tab is represented by
 set shiftwidth=4 " Number of columns to move text when using < and >
 set softtabstop=4 " see :help softtabstop
-set noexpandtab " Don't expand tabs into spaces
 "}}}
 
 " Autoindentation (here for the same reason as tabs)
