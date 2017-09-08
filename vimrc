@@ -151,6 +151,11 @@ nmap <leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1
 "}}}
 
+" Vim-Airline: https://github.com/vim-airline/vim-airline.git {{{
+" Lean & mean status/tabline for vim that's light as air.
+Plug 'vim-airline/vim-airline'
+"}}}
+
 " Vim-Toml: https://github.com/cespare/vim-toml {{{
 " Syntax support for TOML
 Plug 'cespare/vim-toml'
