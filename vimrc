@@ -152,8 +152,16 @@ let g:undotree_SetFocusWhenToggle=1
 "}}}
 
 " Vim-Airline: https://github.com/vim-airline/vim-airline.git {{{
-" Lean & mean status/tabline for vim that's light as air.
+"   Lean & mean status/tabline for vim that's light as air.
 Plug 'vim-airline/vim-airline'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.branch = ''
+"}}}
+
+" Vim-Airline-Themes: https://github.com/vim-airline/vim-airline-themes.git {{{
+"   Themes for vim-airline
+Plug 'vim-airline/vim-airline-themes'
 "}}}
 
 " Vim-Toml: https://github.com/cespare/vim-toml {{{
