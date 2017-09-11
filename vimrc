@@ -154,9 +154,8 @@ let g:undotree_SetFocusWhenToggle=1
 " Vim-Airline: https://github.com/vim-airline/vim-airline.git {{{
 "   Lean & mean status/tabline for vim that's light as air.
 Plug 'vim-airline/vim-airline'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.branch = ''
+set noshowmode " airline handles showing the mode, no need for the native method
+let g:airline_powerline_fonts = 1
 "}}}
 
 " Vim-Airline-Themes: https://github.com/vim-airline/vim-airline-themes.git {{{
