@@ -155,6 +155,7 @@ let g:undotree_SetFocusWhenToggle=1
 "   Lean & mean status/tabline for vim that's light as air.
 Plug 'vim-airline/vim-airline'
 set noshowmode " airline handles showing the mode, no need for the native method
+set encoding=utf-8
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = '%{airline#util#wrap(airline#extensions#obsession#get_status(),0)}C:%B %#__accent_bold#%{g:airline_symbols.linenr} %l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%c%V'
 "}}}
@@ -284,7 +285,7 @@ if has('gui_running')
 			colorscheme herald
 		endtry
 	endtry
-	set guifont=monofur\ for\ Powerline:h11,InputMonoNarrow\ Light:h10,Ubuntu\ Mono\ 9,Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu\ Sans\ Mono\ 8,Dejavu_Sans_Mono:h9,Bitstream\ Vera\ Sans\ Mono\ 9,*
+	set guifont=Inconsolata-g_for_Powerline:h8:cANSI:qDRAFT,monofur\ for\ Powerline:h11,InputMonoNarrow\ Light:h10,Ubuntu\ Mono\ 9,Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu\ Sans\ Mono\ 8,Dejavu_Sans_Mono:h9,Bitstream\ Vera\ Sans\ Mono\ 9,*
 	"if os == "Linux"
 	"	set gfn=Dejavu\ Sans\ Mono\ 9
 	"endif
