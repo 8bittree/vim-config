@@ -156,6 +156,7 @@ let g:undotree_SetFocusWhenToggle=1
 Plug 'vim-airline/vim-airline'
 set noshowmode " airline handles showing the mode, no need for the native method
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = '%{airline#util#wrap(airline#extensions#obsession#get_status(),0)}C:%B %#__accent_bold#%{g:airline_symbols.linenr} %l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%c%V'
 "}}}
 
 " Vim-Airline-Themes: https://github.com/vim-airline/vim-airline-themes.git {{{
@@ -256,8 +257,8 @@ endif
 
 " Configure status line
 " modified, file, file type, read only, column, virtual column, line number, lines
+" Left defined in case airline gets toggled off for whatever reason
 set statusline=%m\ %t\ %y\ %r%=Buf:%n\ Char:%B\ Col:%c%V\ Line:%l/%L
-set laststatus=2 " Turn on the statusline
 
 if has('autocmd')
 	autocmd WinLeave * setlocal nocursorline
