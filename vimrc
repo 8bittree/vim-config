@@ -151,6 +151,19 @@ nmap <leader>u :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1
 "}}}
 
+" Vim-Airline: https://github.com/vim-airline/vim-airline.git {{{
+"   Lean & mean status/tabline for vim that's light as air.
+Plug 'vim-airline/vim-airline'
+set noshowmode " airline handles showing the mode, no need for the native method
+let g:airline_powerline_fonts = 1
+let g:airline_section_z = '%{airline#util#wrap(airline#extensions#obsession#get_status(),0)}C:%B %#__accent_bold#%{g:airline_symbols.linenr} %l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__#:%c%V'
+"}}}
+
+" Vim-Airline-Themes: https://github.com/vim-airline/vim-airline-themes.git {{{
+"   Themes for vim-airline
+Plug 'vim-airline/vim-airline-themes'
+"}}}
+
 " Vim-Toml: https://github.com/cespare/vim-toml {{{
 " Syntax support for TOML
 Plug 'cespare/vim-toml'
@@ -244,8 +257,8 @@ endif
 
 " Configure status line
 " modified, file, file type, read only, column, virtual column, line number, lines
+" Left defined in case airline gets toggled off for whatever reason
 set statusline=%m\ %t\ %y\ %r%=Buf:%n\ Char:%B\ Col:%c%V\ Line:%l/%L
-set laststatus=2 " Turn on the statusline
 
 if has('autocmd')
 	autocmd WinLeave * setlocal nocursorline
@@ -271,7 +284,7 @@ if has('gui_running')
 			colorscheme herald
 		endtry
 	endtry
-	set guifont=InputMonoNarrow\ Light:h10,Ubuntu\ Mono\ 9,Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu\ Sans\ Mono\ 8,Dejavu_Sans_Mono:h9,Bitstream\ Vera\ Sans\ Mono\ 9,*
+	set guifont=monofur\ for\ Powerline:h11,InputMonoNarrow\ Light:h10,Ubuntu\ Mono\ 9,Consolas:h9,Source_Code_Pro:h9,Menlo:h10,Dejavu\ Sans\ Mono\ 8,Dejavu_Sans_Mono:h9,Bitstream\ Vera\ Sans\ Mono\ 9,*
 	"if os == "Linux"
 	"	set gfn=Dejavu\ Sans\ Mono\ 9
 	"endif
