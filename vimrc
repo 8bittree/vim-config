@@ -55,6 +55,11 @@ if version >= 703
 endif
 "}}}
 
+" Elm-vim: https://github.com/ElmCast/elm-vim {{{
+"	Elm language support
+Plug 'elmcast/elm-vim'
+"}}}
+
 " Fugitive: https://github.com/tpope/vim-fugitive "{{{
 "	A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
