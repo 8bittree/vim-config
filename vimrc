@@ -369,7 +369,7 @@ imap <C-s> <ESC>:up<CR>a
 cmap <C-s> <ESC>:up<CR>
 
 " Quickly edit files in the same directory as the current file
-cnoremap %% <C-R>=expand("%:p:h")."/"<CR>
+cnoremap %% <C-R>=fnameescape(expand("%:p:h")."/")<CR>
 
 " New lines start a new undo step
 inoremap <CR> <C-G>u<CR>
