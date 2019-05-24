@@ -103,6 +103,11 @@ Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-repeat'
 "}}}
 
+" Ron.vim: https://github.com/ron-rs/ron.vim {{{
+"	Syntax support for RON
+Plug 'ron-rs/ron.vim'
+"}}}
+
 " Rust: https://github.com/rust-lang/rust.vim {{{
 "	Rust language support
 Plug 'rust-lang/rust.vim'
