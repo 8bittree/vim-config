@@ -40,6 +40,10 @@ call plug#begin()
 Plug 'tpope/vim-abolish'
 "}}}
 
+" Dracula: https://github.com/dracula/vim
+"	A dark theme for Vim
+Plug 'dracula/vim', {'as': 'dracula'}
+
 " EasyMotion: https://github.com/Lokaltog/vim-easymotion {{{
 "	Easily move around the window
 if version >= 703
@@ -75,6 +79,18 @@ Plug 'airblade/vim-gitgutter'
 " GLSL: https://github.com/tikhomirov/vim-glsl
 "	OpenGL Shading language support
 Plug 'tikhomirov/vim-glsl'
+
+" Gruvbox: https://github.com/morhetz/gruvbox
+"	Colorscheme with light mode and dark mode
+Plug 'morhetz/gruvbox'
+
+" Iceberg: https://github.com/cocopon/iceberg.vim
+"	A dark blue colorscheme
+Plug 'cocopon/iceberg.vim'
+
+" Nord Vim: https://github.com/arcticicestudio/nord-vim
+"	An arctic, north-bluish clean and elegant Vim color theme
+Plug 'arcticicestudio/nord-vim'
 
 " Obsession: https://github.com/tpope/vim-obsession {{{
 "	Automatic session management
@@ -291,7 +307,7 @@ set background=dark
 if has('gui_running')
 	set t_Co=256
 	try
-		colorscheme solarized
+		colorscheme dracula
 	catch
 		try
 			colorscheme molokai_mod
