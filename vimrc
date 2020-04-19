@@ -115,12 +115,12 @@ Plug 'rust-lang/rust.vim'
 
 " Slimv: https://github.com/kovisoft/slimv {{{
 "	Superior Lisp Interaction Mode for Vim
-if has('python')
-	if executable('ccl64') && s:is_macvim
-		let g:slimv_swank_cmd='!osascript -e "tell application \"Terminal\" to do script \"ccl64 -l ~/.vim/bundle/slimv_3c52652519/slime/start-swank.lisp\""'
-	endif
-	Plug 'kovisoft/slimv'
-endif
+"if has('python')
+"	if executable('ccl64') && s:is_macvim
+"		let g:slimv_swank_cmd='!osascript -e "tell application \"Terminal\" to do script \"ccl64 -l ~/.vim/bundle/slimv_3c52652519/slime/start-swank.lisp\""'
+"	endif
+"	Plug 'kovisoft/slimv'
+"endif
 "}}}
 
 " Solarized: http://ethanschoonover.com/solarized {{{
@@ -148,7 +148,7 @@ let g:syntastic_mode_map = {
 
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715 {{{
 "	Textmate-like snippets
-if has('python') || has('python3')
+if has('python3')
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	if !has('lua')
@@ -194,7 +194,7 @@ if has("lua")
 		let g:neocomplete#sources = {}
 	endif
 	let g:neocomplete#sources._ = ['buffer', 'member', 'syntax']
-	if has("python") || has("python3")
+	if has("python3")
 		let g:neocomplete#sources._ += ['ultisnips']
 	endif
 	let g:neocomplete#sources.vim = ['vim']
