@@ -167,7 +167,7 @@ let g:syntastic_mode_map = {
 if has('python3')
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	if !has('lua')
+	if !executable('cmake') && !has('lua')
 		Plug 'JazzCore/neocomplcache-ultisnips'
 	endif
 endif
@@ -201,7 +201,14 @@ Plug 'cespare/vim-toml'
 " }}}
 
 " Autocompletion
-if has("lua")
+if has("python3") && executable("cmake")
+	" YouCompleteMe: https://github.com/ycm-core/YouCompleteMe {{{
+	"	a code-completion engine
+	let g:ycm_key_list_select_completion=[]
+	let g:ycm_key_list_previous_completion=[]
+	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
+	"}}}
+elseif has("lua")
 	" Neocomplete: https://github.com/Shougo/neocomplete.vim {{{
 	"	Quick Lua-based autocompletion
 	let g:neocomplete#enable_at_startup = 1
