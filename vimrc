@@ -162,6 +162,11 @@ let g:syntastic_mode_map = {
 	\ "passive_filetypes": [] }
 " }}}
 
+" TComment: https://github.com/tomtom/tcomment_vim {{{
+"	file-type sensible comments for Vim
+Plug 'tomtom/tcomment_vim'
+" }}}
+
 " Ultisnips: http://www.vim.org/scripts/script.php?script_id=2715 {{{
 "	Textmate-like snippets
 if has('python3')
