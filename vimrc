@@ -67,8 +67,8 @@ Plug 'elmcast/elm-vim'
 " Fugitive: https://github.com/tpope/vim-fugitive "{{{
 "	A Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gs :Git<CR>
+nnoremap <Leader>gc :Git commit<CR>
 "}}}
 
 " Gitgutter: https://github.com/airblade/vim-gitgutter {{{
