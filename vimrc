@@ -201,7 +201,12 @@ Plug 'cespare/vim-toml'
 " }}}
 
 " Autocompletion
-if has("python3") && executable("cmake")
+if executable("node")
+	" CoC https://github.com/neoclide/coc.nvim {{{
+	"	Vim ensmartening (inc. code completion)
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"}}}
+elseif has("python3") && executable("cmake")
 	" YouCompleteMe: https://github.com/ycm-core/YouCompleteMe {{{
 	"	a code-completion engine
 	let g:ycm_key_list_select_completion=[]
